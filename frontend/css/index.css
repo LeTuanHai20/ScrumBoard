@@ -1,0 +1,106 @@
+.tilt {
+  transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -webkit-transform: rotate(3deg);
+}
+
+body {
+  min-width: 520px;
+  font-family: sans-serif;
+  background: url('../images/background.jpg') no-repeat;
+  background-size: cover;
+}
+.name{
+  height: 34px;
+  display: block;
+  text-indent: 10px;
+  font-family: sans-serif;
+  padding: 5px;
+}
+.column {
+  width: 272px;
+  float: left;
+  min-height: 10px;
+  padding-bottom: 50px;
+  background-color: aliceblue;
+  margin-left: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.portlet-header {
+  background-color:aqua;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(9,30,66,.25);
+  cursor: pointer;
+  display: block;
+  max-width: 300px;
+  min-height: 20px;
+  text-decoration: none;
+  z-index: 0;
+  margin: 0px 10px 0px 10px;
+}
+.portlet-header {
+  padding: 0.2em 0.3em;
+  margin-bottom: 0.5em;
+  position: relative;
+}
+.portlet-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -8px;
+}
+.portlet-content {
+  padding: 0.4em;
+}
+.portlet-placeholder {
+  border: 1px dotted black;
+  margin: 0 1em 1em 0;
+  height: 50px;
+}
+.contain{
+  margin-top: 100px;
+  margin-left: 100px;
+  width: auto;
+  
+}
+.add{
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(9,30,66,.25);
+  cursor: pointer;
+  display: block;
+  max-width: 300px;
+  min-height: 20px;
+  position: relative;
+  text-decoration: none;
+  z-index: 0;
+  margin: 0px 10px 0px 10px;
+}
+.add>i{
+  font-size: 10px;
+}
+.content{
+  margin: 1px 10px 1px 10px;;
+}
+.dropdownMenuButton{
+  color: black;
+}
+.addColumn input, .addTask input{
+    width: 89%;
+    margin-top: 10px;
+    margin-left: 14px;
+}
+.addTask input{
+  margin-top: 10px;
+}
+.btnAddTask, .btnAddColumn{
+  margin-left: 15px;
+}
+.addColumn button{
+  margin-top: 10px;
+}
+.addTask{
+  padding: 0.2em 0.3em;
+  margin-bottom: 0.5em;
+  position: relative;
+}

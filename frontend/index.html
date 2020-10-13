@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Trang chủ</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/underscore@1.11.0/underscore-min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="./script/backbone.js"></script>
+  </head>  
+  <body>
+  
+    <div id="app"></div>
+   <script type="text/ractive" id="index">
+    <div class="header">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">Scrum board</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/index.html">Trang chủ <span class="sr-only">(current)</span></a>
+              </li>
+              {{#if Islogin}} 
+              <li class="nav-item active"> <a class="nav-link" href="/register.html">Đăng kí</a></li> 
+              <li class="nav-item active"> <a class="nav-link"  on-click="['logout', cookie]">Đăng xuất</a> </li> 
+              {{else}} 
+              <a class="nav-link active" href="/login.html">Đăng nhập</a> 
+              <li class="nav-item active"> <a class="nav-link" href="/register.html">Đăng kí</a> </li> 
+              {{/if}}
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+        </nav>
+     </div>
+    <div id="sortable" class="contain">
+      {{#each columns:index}}
+      <div class="column">
+        <div class="name">
+            {{ColumnName}}
+            <a class="dropdownMenuButton" data-toggle="dropdown">
+              <i class="fa fa-ellipsis-h"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" on-click="['DeleteColumn',ColumnId]">Xóa danh sách</a>
+            </div>
+        </div>
+          {{#each Task}}
+          <div class="portlet">
+            <div class="portlet-header"> {{Name}}</div>
+             <div class="content">
+              {{Content}}
+             </div>
+         </div>
+          {{/each}}
+          <div class="name idAddTask" on-click="ShowForm" id ="{{ColumnId + (Math.random().toString(16)+"000000000").substr(2,8)}}">
+             <i class="fa fa-plus"></i> Thêm mới 
+          </div>
+         <div class="addTask" id="{{ColumnId + (Math.random().toString(16)+"000000000").substr(2,8)}}">
+          <input type="text" class="form-control" type="hidden" id="{{ColumnId}}" value = "{{ColumnId}}"> 
+            <div class="form-group">
+              <input type="text" class="form-control" id="{{(Math.random().toString(16)+"000000000").substr(2,8)}}" aria-describedby="emailHelp" placeholder="Tên">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="{{(Math.random().toString(16)+"000000000").substr(2,8)}}" placeholder="Nội dung">
+            </div>
+            <button class="btn btn-primary btnAddTask" on-click="addTask">Thêm mới</button>
+            <button class="btn btn-primary btnCancelTask" on-click="['HiddenForm',ColumnId]">Hủy</button>
+         </div>
+      </div>
+      {{/each}}
+      <div class="column">
+        <div class="name" id="idAddColumn">
+          <i class="fa fa-plus"></i> Thêm mới cột
+        </div>
+        <div class="form-group" class="addColumn"> 
+          <input type="text" class="form-control" id="nameColumn" aria-describedby="emailHelp" placeholder="Nhập tên cột">
+          <button class="btn btn-primary btnAddColumn" on-click="addColumn">Thêm mới</button>
+          <button class="btn btn-primary btnCancelColumn">Hủy</button>
+        </div>
+      </div>
+     </div>
+   </script>
+    <script src="https://cdn.jsdelivr.net/npm/ractive"></script>
+    <script src="./script/index.js"></script>
+   
+  </body>
+</html>
